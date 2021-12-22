@@ -9,7 +9,6 @@ function NewEmployee() {
   let [ifPass, setIfPass] = useState("");
   let [array, arrayOfUser] = useState([]);
 
-
   function getNameForm(event) {
     fName = event.target.value;
   }
@@ -33,7 +32,21 @@ function NewEmployee() {
 
   function buttonOnClick(e) {
     e.preventDefault();
-    array = [setFName(fName),setLName(lName),setBirthYear(birthYear),setCity(city),setGender(gender),setIfPass(ifPass)];
+    setFName(fName);
+    setLName(lName);
+    setBirthYear(birthYear);
+    setCity(city);
+    setGender(gender);
+    setIfPass(ifPass);
+
+    array.push({
+      name: lName,
+      lastName: lName,
+      year: birthYear,
+      city: city,
+      gender: gender,
+      ifPass: ifPass,
+    });
   }
 
   return (
@@ -67,9 +80,37 @@ function NewEmployee() {
         <button onClick={buttonOnClick}>Send</button>
       </form>
 
-      
-        <div>{fName} {lName} {birthYear} {city} {gender} {ifPass}</div>
-      
+      <div>
+        {array.map((ele) => (
+          <p>
+            name: {ele.name}, LastName: {ele.lastName}, year Of birth:
+            {ele.year}, city: {ele.city}, Gender: {ele.gender}, If Pass Test:
+            {ele.ifPass}.
+          </p>
+        ))}
+      </div>
+      <div>
+        {array.map((ele) => {
+            <table>
+              <tr>
+                <th>Name</th>
+                <th>Last Name</th>
+                <th>Year</th>
+                <th>City</th>
+                <th>Gender</th>
+                <th>Is Pass?</th>
+              </tr>
+              <tr>
+                <tr>{ele.name}</tr>
+                <tr>{ele.lastName}</tr>
+                <tr>{ele.year}</tr>
+                <tr>{ele.city}</tr>
+                <tr>{ele.gender}</tr>
+                <tr>{ele.ifPass}</tr>
+              </tr>
+            </table>
+        })}
+      </div>
     </div>
   );
 }
