@@ -40,13 +40,15 @@ function NewEmployee() {
     setIfPass(ifPass);
 
     array.push({
-      name: lName,
+      name: fName,
       lastName: lName,
       year: birthYear,
       city: city,
       gender: gender,
       ifPass: ifPass,
     });
+
+    arrayOfUser(array)
   }
 
   return (
@@ -90,26 +92,26 @@ function NewEmployee() {
         ))}
       </div>
       <div>
-        {array.map((ele) => {
-            <table>
-              <tr>
-                <th>Name</th>
-                <th>Last Name</th>
-                <th>Year</th>
-                <th>City</th>
-                <th>Gender</th>
-                <th>Is Pass?</th>
-              </tr>
-              <tr>
-                <tr>{ele.name}</tr>
-                <tr>{ele.lastName}</tr>
-                <tr>{ele.year}</tr>
-                <tr>{ele.city}</tr>
-                <tr>{ele.gender}</tr>
-                <tr>{ele.ifPass}</tr>
-              </tr>
-            </table>
-        })}
+        <table>
+          <tr>
+            <th>Name</th>
+            <th>Last Name</th>
+            <th>Year</th>
+            <th>City</th>
+            <th>Gender</th>
+            <th>Is Pass?</th>
+          </tr>
+          {array.map((ele) => (
+            <tr>
+              <td>{ele.name}</td>
+              <td>{ele.lastName}</td>
+              <td>{ele.year}</td>
+              <td>{ele.city}</td>
+              <td>{ele.gender}</td>
+              <td>{ele.ifPass}</td>
+            </tr>
+          ))}
+        </table>
       </div>
     </div>
   );
